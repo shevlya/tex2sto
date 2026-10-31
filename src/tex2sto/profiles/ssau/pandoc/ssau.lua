@@ -2,12 +2,15 @@
 
 function Para(element)
   local text = pandoc.utils.stringify(element)
-  local style = "Tex2Sto Body"
-  if text:match("^Рисунок%s") then
+  local style = "Tex2Sto Body"  
+  if text:match("^Ключевые слова:") then
+    style = "Tex2Sto Abstract Keywords"
+  elseif text:match("^Рисунок%s") then
     style = "Tex2Sto Figure Caption"
   elseif text:match("^Таблица%s") then
     style = "Tex2Sto Table Caption"
   end
+  
   return pandoc.Div({ element }, pandoc.Attr("", {}, { ["custom-style"] = style }))
 end
 
