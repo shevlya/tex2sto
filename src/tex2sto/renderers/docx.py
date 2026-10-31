@@ -117,7 +117,7 @@ def _assignment_pages(document, project: SourceProject) -> list:
     if metadata.assignment_variant == "none":
         return []
     elements = []
-    heading = _front_paragraph(document, "ЗАДАНИЕ", style="Tex2Sto Structural Heading")
+    heading = _front_paragraph(document, "ЗАДАНИЕ", style="Tex2Sto Heading 1 NoTOC")
     elements.append(heading._p)
     lines = (
         f"на выпускную квалификационную работу обучающемуся {metadata.author}",
@@ -137,7 +137,7 @@ def _assignment_pages(document, project: SourceProject) -> list:
         continuation = _front_paragraph(
             document,
             "ЗАДАНИЕ (ПРОДОЛЖЕНИЕ)",
-            style="Tex2Sto Structural Heading",
+            style="Tex2Sto Heading 1 NoTOC",
         )
         elements.append(continuation._p)
         signature_lines = [
@@ -165,7 +165,7 @@ def _abstract_and_toc(
     counts = {kind: sum(item.kind is kind for item in index.objects) for kind in ObjectKind}
     appendices = len(find_command_calls(project.body, "appendix", 2))
     elements = []
-    heading = _front_paragraph(document, "РЕФЕРАТ", style="Tex2Sto Structural Heading")
+    heading = _front_paragraph(document, "РЕФЕРАТ", style="Tex2Sto Heading 1 NoTOC")
     elements.append(heading._p)
     stats = _front_paragraph(document)
     stats.add_run("Работа: ")
@@ -186,7 +186,7 @@ def _abstract_and_toc(
     abstract = _front_paragraph(document, abstract_text)
     abstract.add_run().add_break(WD_BREAK.PAGE)
     elements.append(abstract._p)
-    toc_heading = _front_paragraph(document, "СОДЕРЖАНИЕ", style="Tex2Sto Structural Heading")
+    toc_heading = _front_paragraph(document, "СОДЕРЖАНИЕ", style="Tex2Sto Heading 1 NoTOC")
     elements.append(toc_heading._p)
     for level, title, bookmark in toc_entries:
         entry = _front_paragraph(document, style=f"Tex2Sto TOC {level}")
