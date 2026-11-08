@@ -242,7 +242,7 @@ def _replace_semantic_commands(
             explanation = explanation.rstrip(" ,;.")
             prefix = "где " if position == 0 else ""
             ending = "." if position == len(symbols) - 1 else ";"
-            lines.append(f"{prefix}{symbol} --- {explanation}{ending}")
+            lines.append(f"{prefix}{symbol} -- {explanation}{ending}")
         separator = r"\\ " if target == "pdf" else r"\newline "
         rendered = separator.join(lines)
         rendered = (
